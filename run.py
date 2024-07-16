@@ -1,23 +1,22 @@
-# TOKEN='466306343:AAF_8kY66C06QiUxVdLgkw_NjOrotTD2o88'
-
 import asyncio
+import logging
 
 from aiogram import Bot, Dispatcher
-from aiogram.types import Message
-from aiogram.filters import CommandStart
 
-bot = Bot(token='466306343:AAF_8kY66C06QiUxVdLgkw_NjOrotTD2o88')
-dp = Dispatcher()
-
-
-@dp.message(CommandStart())
-async def cmd_start(message: Message):
-    await message.answer('Привет!')
+from config import TOKEN
+from app.handlers import router
 
 
 async def main():
+    bot = Bot(token=TOKEN)
+    dp = Dispatcher()
+    dp.include_router(router)
     await dp.start_polling(bot)
 
 
 if __name__ == '__main__':
-       asyncio.run(main())
+    logging.basicConfig(level=logging.INFO)
+    try:
+        asyncio.run(main())
+    except:
+        print('Exit')

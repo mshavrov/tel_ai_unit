@@ -14,17 +14,47 @@ async def cmd_start(message: Message):
     await message.bot.send_chat_action(chat_id=message.from_user.id,
                                        action=ChatAction.TYPING)
     # await asyncio.sleep (1)
-    await message.answer('Приветствуем Вас в телеграмм боте компании Юнит Групп! ', reply_markup=kb.main)
+    await message.answer('Приветствуем Вас в телеграмм боте компании Юнит Групп! \nМы хотим услышать Ваш отзыв о работе компании, поделиться контактами соответствующих отделов. \nДля этого выберите один из пунктов меню! ', reply_markup=kb.main)
     # # ответ в даилоге и обычная клавиатура
-    # await message.reply('О джежай, приветствую тебя!!! \nМы ждали тебя!', reply_markup=kb.main) 
+    # await message.reply('Приветствуем Вас в телеграмм боте компании Юнит Групп!', reply_markup=kb.main) 
     # ответ на конкретное сообщение и  inline клавиатура
 
-@router.callback_query(F.data == 'my_contact')
-async def cmd_my_contact(callback: CallbackQuery):
-    await callback.answer('')
-    await asyncio.sleep (1)
-    await callback.message.answer('Хуй')
+@router.callback_query(F.data == 'home')
+async def cmd_contact(callback: CallbackQuery):
+    await callback.answer('Контакты')
+    await callback.message.answer('Вы перешли в главный раздел. \nВыберите один из пунктов.', reply_markup=kb.inline_home)
 
+@router.callback_query(F.data == 'contact')
+async def cmd_contact(callback: CallbackQuery):
+    await callback.answer('Вы запросили контакты')
+    await callback.message.answer('Контакты', reply_markup=kb.inline_contact)
+
+    
+@router.callback_query(F.data == 'adress') 
+async def cmd_contact(callback: CallbackQuery):
+    await callback.answer('Вы запросили адреса')
+    await callback.message.answer('Адреса компании', reply_markup=kb.inline_adress)
+
+
+@router.callback_query(F.data == 'catalog')
+async def cmd_contact(callback: CallbackQuery):
+    await callback.answer('Вы запросили каталог')
+    await callback.message.answer('Каталог', reply_markup=kb.inline_catalog)
+
+@router.callback_query(F.data == 'review')
+async def cmd_contact(callback: CallbackQuery):
+    await callback.answer('Вы запросили отзывы')
+    await callback.message.answer('Отзывы', reply_markup=kb.inline_review)
+    
+@router.callback_query(F.data == 'predl')
+async def cmd_contact(callback: CallbackQuery):
+    await callback.answer('Вы запросили предложения')
+    await callback.message.answer('Предложения', reply_markup=kb.inline_predl)
+
+@router.callback_query(F.data == 'XXXXX')
+async def cmd_contact(callback: CallbackQuery):
+    await callback.answer('Вы запросили XXXXX')
+    await callback.message.answer('Контакты', reply_markup=kb.inline_XXXXX)
 
 @router.message(F.photo)
 async def get_photo(message: Message):

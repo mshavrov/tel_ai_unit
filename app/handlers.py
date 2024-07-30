@@ -5,9 +5,18 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.filters import CommandStart, CommandObject
 from aiogram.enums import ChatAction
 
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.state import State, StatesGroup
+
 import app.keyboards as kb
 
+
 router = Router()
+
+class Reg(StatesGroup):
+    name = State()
+    number = State()
+    photo = State()
 
 @router.message(CommandStart())
 async def cmd_start(message: Message):
@@ -51,10 +60,13 @@ async def cmd_contact(callback: CallbackQuery):
     await callback.answer('Вы запросили предложения')
     await callback.message.answer('Предложения', reply_markup=kb.inline_predl)
 
-@router.callback_query(F.data == 'XXXXX')
-async def cmd_contact(callback: CallbackQuery):
-    await callback.answer('Вы запросили XXXXX')
-    await callback.message.answer('Контакты', reply_markup=kb.inline_XXXXX)
+# ПРИМЕР ловить callback
+# @router.callback_query(F.data == 'XXXXX')
+# async def cmd_contact(callback: CallbackQuery):
+#     await callback.answer('Вы запросили XXXXX')
+#     await callback.message.answer('Контакты', reply_markup=kb.inline_XXXXX)
+    
+
 
 @router.message(F.photo)
 async def get_photo(message: Message):

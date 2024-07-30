@@ -30,7 +30,9 @@ inline_contact = InlineKeyboardMarkup(inline_keyboard=[
 
 inline_adress = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Адрес магазина', callback_data='sklad_39'), InlineKeyboardButton(text='Адрес склада', callback_data='murino')],
-    [InlineKeyboardButton(text='Офис компании', callback_data='office'), InlineKeyboardButton(text='Вернуться назад', callback_data='home')]
+    [InlineKeyboardButton(text='Офис компании', url='https://tel:+78126482312'), InlineKeyboardButton(text='Интернет магазин', url='https://upakovka-spb.ru/')],
+    [InlineKeyboardButton(text='Вернуться назад', callback_data='home')]
+    
 ]) 
 
 inline_catalog = InlineKeyboardMarkup(inline_keyboard=[
@@ -42,11 +44,11 @@ inline_catalog = InlineKeyboardMarkup(inline_keyboard=[
 ]) 
 
 inline_review = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Оставить отзыв', callback_data='sklad_39')],
+    [InlineKeyboardButton(text='Отзыв по заказу', callback_data='sklad_39'), InlineKeyboardButton(text='Отзыв по доставке', callback_data='sklad_39')],
     [InlineKeyboardButton(text='Вернуться назад', callback_data='home')]
 ])
 
 inline_predl = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Оставить предложение', callback_data='sklad_39')],
+    [InlineKeyboardButton(text='Для отдела закупок', callback_data='zakup'), InlineKeyboardButton(text='Услуги для компании', callback_data='service')],
     [InlineKeyboardButton(text='Вернуться назад', callback_data='home')]
 ])

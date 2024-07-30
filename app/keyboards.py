@@ -23,7 +23,7 @@ inline_home = InlineKeyboardMarkup(inline_keyboard=[
 ]) 
 
 inline_contact = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Оптовый магазин', callback_data='opt'), InlineKeyboardButton(text='Розничный магазин', callback_data='rozn')],
+    [InlineKeyboardButton(text='Оптовый отдел', callback_data='opt'), InlineKeyboardButton(text='Розничный магазин', callback_data='rozn')],
     [InlineKeyboardButton(text='Отдел закупок', callback_data='zakup'), InlineKeyboardButton(text='Предложения', callback_data='service')],
     [InlineKeyboardButton(text='Вернуться назад', callback_data='home')]
 ]) 
@@ -50,5 +50,5 @@ inline_review = InlineKeyboardMarkup(inline_keyboard=[
 
 inline_predl = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text='Для отдела закупок', callback_data='zakup'), InlineKeyboardButton(text='Услуги для компании', callback_data='service')],
-    [InlineKeyboardButton(text='Вернуться назад', callback_data='home')]
+    [InlineKeyboardButton(text='Список вызываем', callback_data='google_menu'), InlineKeyboardButton(text='Вернуться назад', callback_data='home')]
 ])

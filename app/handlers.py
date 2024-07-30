@@ -59,6 +59,16 @@ async def cmd_contact(callback: CallbackQuery):
 async def cmd_contact(callback: CallbackQuery):
     await callback.answer('Вы запросили предложения')
     await callback.message.answer('Предложения', reply_markup=kb.inline_predl)
+    
+    
+#  Вызываем меню из Гугл таблиц   
+
+# @router.callback_query(F.data == 'google_menu')
+# async def cmd_contact(callback: CallbackQuery):
+#     await callback.answer('Вы запросили предложения')
+#     await callback.message.answer('Предложения', reply_markup=kb.inline_predl)
+
+
 
 # ПРИМЕР ловить callback
 # @router.callback_query(F.data == 'XXXXX')
